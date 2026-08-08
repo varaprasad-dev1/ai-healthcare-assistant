@@ -1,0 +1,229 @@
+/* ===========================
+   Register Page
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f9ff;
+}
+
+.register-container{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+
+}
+
+/* Left Section */
+
+.register-left{
+
+    width:45%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:60px;
+
+    background:white;
+
+}
+
+.register-left h1{
+
+    color:#0F52BA;
+
+    font-size:40px;
+
+    margin-bottom:15px;
+
+}
+
+.register-left p{
+
+    color:#666;
+
+    margin-bottom:25px;
+
+    line-height:1.6;
+
+}
+
+.register-left form{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.register-left input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:18px;
+
+    border:1px solid #d0d7de;
+
+    border-radius:8px;
+
+    outline:none;
+
+    font-size:16px;
+
+    transition:0.3s;
+
+}
+
+.register-left input:focus{
+
+    border-color:#0F52BA;
+
+    box-shadow:0 0 5px rgba(15,82,186,0.3);
+
+}
+
+.register-left button{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#0F52BA;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.register-left button:hover{
+
+    background:#084298;
+
+}
+
+.register-left button:disabled{
+
+    background:gray;
+
+    cursor:not-allowed;
+
+}
+
+.message{
+
+    margin-top:20px;
+
+    color:green;
+
+    font-weight:bold;
+
+}
+
+.login-link{
+
+    margin-top:25px;
+
+    text-align:center;
+
+}
+
+.login-link a{
+
+    color:#0F52BA;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* Right Section */
+
+.register-right{
+
+    width:55%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #0F52BA,
+        #5DADE2
+    );
+
+}
+
+.register-right img{
+
+    width:80%;
+
+    max-width:650px;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.register-container{
+
+    flex-direction:column;
+
+}
+
+.register-left{
+
+    width:100%;
+
+    padding:40px;
+
+}
+
+.register-right{
+
+    width:100%;
+
+    padding:30px;
+
+}
+
+.register-right img{
+
+    width:95%;
+
+}
+
+}

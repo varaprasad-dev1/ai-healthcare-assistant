@@ -1,0 +1,1318 @@
+{
+  "Common Cold": {
+    "description": "A viral infection affecting the upper respiratory tract.",
+    "medicines": [
+      "Paracetamol",
+      "Cetirizine",
+      "Vitamin C"
+    ],
+    "precautions": [
+      "Take adequate rest",
+      "Drink warm fluids",
+      "Wash hands frequently",
+      "Avoid cold beverages"
+    ],
+    "diet": [
+      "Warm soup",
+      "Citrus fruits",
+      "Honey",
+      "Herbal tea"
+    ],
+    "doctor": "General Physician"
+  },
+
+  "Influenza": {
+    "description": "A contagious viral infection that attacks the respiratory system.",
+    "medicines": [
+      "Oseltamivir",
+      "Paracetamol",
+      "Ibuprofen"
+    ],
+    "precautions": [
+      "Rest well",
+      "Stay hydrated",
+      "Wear a mask",
+      "Avoid crowded places"
+    ],
+    "diet": [
+      "Soup",
+      "Fresh fruits",
+      "Warm water",
+      "Protein-rich food"
+    ],
+    "doctor": "General Physician"
+  },
+
+  "COVID-19": {
+    "description": "A respiratory illness caused by SARS-CoV-2.",
+    "medicines": [
+      "Paracetamol",
+      "ORS",
+      "Vitamin C"
+    ],
+    "precautions": [
+      "Self-isolate",
+      "Wear a mask",
+      "Monitor oxygen levels",
+      "Stay hydrated"
+    ],
+    "diet": [
+      "Protein-rich diet",
+      "Fruits",
+      "Vegetables",
+      "Plenty of fluids"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Dengue": {
+    "description": "A mosquito-borne viral disease causing high fever and body pain.",
+    "medicines": [
+      "Paracetamol",
+      "ORS"
+    ],
+    "precautions": [
+      "Avoid NSAIDs",
+      "Drink plenty of fluids",
+      "Monitor platelet count",
+      "Take adequate rest"
+    ],
+    "diet": [
+      "Papaya leaf juice",
+      "Kiwi",
+      "Pomegranate",
+      "Coconut water"
+    ],
+    "doctor": "General Physician"
+  },
+
+  "Malaria": {
+    "description": "A mosquito-borne parasitic disease causing fever and chills.",
+    "medicines": [
+      "Artemether",
+      "Lumefantrine",
+      "Paracetamol"
+    ],
+    "precautions": [
+      "Sleep under mosquito nets",
+      "Complete medication",
+      "Drink water",
+      "Rest"
+    ],
+    "diet": [
+      "Bananas",
+      "Rice",
+      "Soup",
+      "Fresh juice"
+    ],
+    "doctor": "Infectious Disease Specialist"
+  },
+
+  "Typhoid": {
+    "description": "A bacterial infection caused by Salmonella Typhi.",
+    "medicines": [
+      "Azithromycin",
+      "Cefixime",
+      "Paracetamol"
+    ],
+    "precautions": [
+      "Drink boiled water",
+      "Maintain hygiene",
+      "Complete antibiotics",
+      "Take rest"
+    ],
+    "diet": [
+      "Soft rice",
+      "Curd",
+      "Bananas",
+      "Boiled vegetables"
+    ],
+    "doctor": "General Physician"
+  },
+
+  "Tuberculosis": {
+    "description": "A bacterial infection primarily affecting the lungs.",
+    "medicines": [
+      "Isoniazid",
+      "Rifampicin",
+      "Pyrazinamide",
+      "Ethambutol"
+    ],
+    "precautions": [
+      "Complete full treatment",
+      "Wear a mask",
+      "Maintain ventilation",
+      "Avoid smoking"
+    ],
+    "diet": [
+      "Eggs",
+      "Milk",
+      "Nuts",
+      "High-protein meals"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Chickenpox": {
+    "description": "A viral infection causing itchy skin rash and blisters.",
+    "medicines": [
+      "Calamine Lotion",
+      "Paracetamol",
+      "Acyclovir"
+    ],
+    "precautions": [
+      "Avoid scratching",
+      "Maintain hygiene",
+      "Rest",
+      "Avoid contact with others"
+    ],
+    "diet": [
+      "Soft foods",
+      "Soup",
+      "Fruit juice",
+      "Plenty of water"
+    ],
+    "doctor": "Dermatologist"
+  },
+
+  "Measles": {
+    "description": "A highly contagious viral infection causing rash and fever.",
+    "medicines": [
+      "Paracetamol",
+      "Vitamin A"
+    ],
+    "precautions": [
+      "Isolate patient",
+      "Stay hydrated",
+      "Take rest",
+      "Monitor fever"
+    ],
+    "diet": [
+      "Soup",
+      "Fruit juice",
+      "Rice",
+      "Protein-rich meals"
+    ],
+    "doctor": "Pediatrician"
+  },
+
+  "Mumps": {
+    "description": "A viral infection causing swollen salivary glands.",
+    "medicines": [
+      "Paracetamol",
+      "Ibuprofen"
+    ],
+    "precautions": [
+      "Rest",
+      "Avoid sour foods",
+      "Drink fluids",
+      "Maintain oral hygiene"
+    ],
+    "diet": [
+      "Soft foods",
+      "Yogurt",
+      "Soup",
+      "Smoothies"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Cholera": {
+    "description": "A bacterial infection causing severe diarrhea and dehydration.",
+    "medicines": [
+      "ORS",
+      "Azithromycin",
+      "Doxycycline"
+    ],
+    "precautions": [
+      "Drink clean water",
+      "Maintain hygiene",
+      "Take ORS",
+      "Seek immediate treatment"
+    ],
+    "diet": [
+      "Rice",
+      "Bananas",
+      "Boiled potatoes",
+      "Coconut water"
+    ],
+    "doctor": "General Physician"
+  },
+
+  "Hepatitis A": {
+    "description": "A viral liver infection spread through contaminated food and water.",
+    "medicines": [
+      "Supportive care",
+      "Vitamin supplements"
+    ],
+    "precautions": [
+      "Avoid alcohol",
+      "Rest",
+      "Drink clean water",
+      "Maintain hygiene"
+    ],
+    "diet": [
+      "Low-fat meals",
+      "Fresh fruits",
+      "Vegetables",
+      "Plenty of water"
+    ],
+    "doctor": "Hepatologist"
+  },
+
+  "Hepatitis B": {
+    "description": "A viral infection affecting the liver.",
+    "medicines": [
+      "Tenofovir",
+      "Entecavir"
+    ],
+    "precautions": [
+      "Avoid alcohol",
+      "Regular monitoring",
+      "Safe practices",
+      "Healthy lifestyle"
+    ],
+    "diet": [
+      "Whole grains",
+      "Vegetables",
+      "Lean protein",
+      "Fruits"
+    ],
+    "doctor": "Hepatologist"
+  },
+
+  "Hepatitis C": {
+    "description": "A viral liver infection that may become chronic.",
+    "medicines": [
+      "Sofosbuvir",
+      "Ledipasvir"
+    ],
+    "precautions": [
+      "Avoid alcohol",
+      "Follow treatment",
+      "Healthy diet",
+      "Regular checkups"
+    ],
+    "diet": [
+      "Vegetables",
+      "Whole grains",
+      "Lean protein",
+      "Fruits"
+    ],
+    "doctor": "Hepatologist"
+  },
+
+  "Pneumonia": {
+    "description": "An infection that inflames the air sacs in one or both lungs.",
+    "medicines": [
+      "Amoxicillin",
+      "Azithromycin",
+      "Paracetamol"
+    ],
+    "precautions": [
+      "Complete antibiotics",
+      "Rest",
+      "Drink fluids",
+      "Avoid smoking"
+    ],
+    "diet": [
+      "Soup",
+      "Warm water",
+      "Protein-rich meals",
+      "Fresh fruits"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Rabies": {
+    "description": "A viral disease transmitted through infected animal bites.",
+    "medicines": [
+      "Rabies Vaccine",
+      "Rabies Immunoglobulin"
+    ],
+    "precautions": [
+      "Wash wound immediately",
+      "Seek emergency care",
+      "Complete vaccination",
+      "Avoid untreated animal bites"
+    ],
+    "diet": [
+      "Balanced diet",
+      "Protein-rich foods",
+      "Fresh fruits",
+      "Water"
+    ],
+    "doctor": "Emergency Physician"
+  },
+
+  "Tetanus": {
+    "description": "A bacterial infection affecting the nervous system.",
+    "medicines": [
+      "Tetanus Immunoglobulin",
+      "Metronidazole"
+    ],
+    "precautions": [
+      "Clean wounds",
+      "Get vaccinated",
+      "Seek immediate care",
+      "Complete treatment"
+    ],
+    "diet": [
+      "Soft foods",
+      "Protein-rich meals",
+      "Milk",
+      "Water"
+    ],
+    "doctor": "General Physician"
+  },
+
+  "HIV/AIDS": {
+    "description": "A viral infection that weakens the immune system.",
+    "medicines": [
+      "Antiretroviral Therapy (ART)"
+    ],
+    "precautions": [
+      "Take ART regularly",
+      "Safe practices",
+      "Regular monitoring",
+      "Healthy lifestyle"
+    ],
+    "diet": [
+      "Balanced diet",
+      "Lean protein",
+      "Fresh fruits",
+      "Vegetables"
+    ],
+    "doctor": "Infectious Disease Specialist"
+  },
+
+  "Whooping Cough": {
+    "description": "A contagious bacterial infection causing severe coughing.",
+    "medicines": [
+      "Azithromycin",
+      "Erythromycin"
+    ],
+    "precautions": [
+      "Avoid contact with others",
+      "Complete antibiotics",
+      "Rest",
+      "Stay hydrated"
+    ],
+    "diet": [
+      "Soup",
+      "Warm water",
+      "Soft foods",
+      "Fruit juice"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Leptospirosis": {
+    "description": "A bacterial disease spread through water contaminated with animal urine.",
+    "medicines": [
+      "Doxycycline",
+      "Penicillin"
+    ],
+    "precautions": [
+      "Avoid contaminated water",
+      "Complete antibiotics",
+      "Maintain hygiene",
+      "Rest"
+    ],
+    "diet": [
+      "Balanced diet",
+      "Fresh fruits",
+      "Vegetables",
+      "Water"
+    ],
+    "doctor": "General Physician"
+  },
+    "Asthma": {
+    "description": "A chronic disease causing inflammation and narrowing of the airways.",
+    "medicines": [
+      "Salbutamol Inhaler",
+      "Budesonide",
+      "Montelukast"
+    ],
+    "precautions": [
+      "Avoid dust and smoke",
+      "Carry inhaler",
+      "Exercise moderately",
+      "Take medicines regularly"
+    ],
+    "diet": [
+      "Fresh fruits",
+      "Leafy vegetables",
+      "Vitamin D rich foods",
+      "Warm water"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Bronchitis": {
+    "description": "Inflammation of the bronchial tubes causing cough and mucus.",
+    "medicines": [
+      "Ambroxol",
+      "Paracetamol",
+      "Azithromycin"
+    ],
+    "precautions": [
+      "Avoid smoking",
+      "Stay hydrated",
+      "Take rest",
+      "Avoid pollution"
+    ],
+    "diet": [
+      "Soup",
+      "Warm tea",
+      "Fruits",
+      "Vegetables"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "COPD": {
+    "description": "A chronic lung disease that makes breathing difficult.",
+    "medicines": [
+      "Tiotropium",
+      "Salbutamol",
+      "Budesonide"
+    ],
+    "precautions": [
+      "Stop smoking",
+      "Avoid dust",
+      "Pulmonary rehabilitation",
+      "Regular exercise"
+    ],
+    "diet": [
+      "Protein-rich food",
+      "Fresh vegetables",
+      "Fruits",
+      "Water"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Sinusitis": {
+    "description": "Inflammation of the sinus cavities causing facial pain and congestion.",
+    "medicines": [
+      "Cetirizine",
+      "Amoxicillin",
+      "Paracetamol"
+    ],
+    "precautions": [
+      "Steam inhalation",
+      "Stay hydrated",
+      "Avoid allergens",
+      "Rest"
+    ],
+    "diet": [
+      "Warm soup",
+      "Herbal tea",
+      "Fruits",
+      "Water"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Tonsillitis": {
+    "description": "Inflammation of the tonsils usually caused by infection.",
+    "medicines": [
+      "Amoxicillin",
+      "Paracetamol"
+    ],
+    "precautions": [
+      "Drink warm fluids",
+      "Rest",
+      "Avoid cold drinks",
+      "Maintain oral hygiene"
+    ],
+    "diet": [
+      "Soup",
+      "Soft foods",
+      "Warm tea",
+      "Bananas"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Allergic Rhinitis": {
+    "description": "An allergic reaction causing sneezing and nasal congestion.",
+    "medicines": [
+      "Cetirizine",
+      "Loratadine",
+      "Fluticasone Nasal Spray"
+    ],
+    "precautions": [
+      "Avoid allergens",
+      "Keep surroundings clean",
+      "Wear a mask",
+      "Use air purifier"
+    ],
+    "diet": [
+      "Vitamin C rich foods",
+      "Fruits",
+      "Vegetables",
+      "Water"
+    ],
+    "doctor": "Allergist"
+  },
+
+  "Laryngitis": {
+    "description": "Inflammation of the voice box causing hoarseness.",
+    "medicines": [
+      "Paracetamol",
+      "Ibuprofen"
+    ],
+    "precautions": [
+      "Rest your voice",
+      "Drink warm water",
+      "Avoid smoking",
+      "Use steam inhalation"
+    ],
+    "diet": [
+      "Warm soup",
+      "Honey",
+      "Herbal tea",
+      "Soft foods"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Pharyngitis": {
+    "description": "Inflammation of the throat causing soreness.",
+    "medicines": [
+      "Paracetamol",
+      "Amoxicillin"
+    ],
+    "precautions": [
+      "Rest",
+      "Warm salt water gargle",
+      "Drink fluids",
+      "Avoid cold drinks"
+    ],
+    "diet": [
+      "Soup",
+      "Soft foods",
+      "Warm tea",
+      "Honey"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Pulmonary Fibrosis": {
+    "description": "A lung disease causing scarring of lung tissue.",
+    "medicines": [
+      "Pirfenidone",
+      "Nintedanib"
+    ],
+    "precautions": [
+      "Avoid smoking",
+      "Pulmonary rehabilitation",
+      "Exercise regularly",
+      "Regular follow-up"
+    ],
+    "diet": [
+      "High-protein diet",
+      "Vegetables",
+      "Fruits",
+      "Water"
+    ],
+    "doctor": "Pulmonologist"
+  },
+
+  "Sleep Apnea": {
+    "description": "A disorder where breathing repeatedly stops during sleep.",
+    "medicines": [],
+    "precautions": [
+      "Lose weight",
+      "Sleep on your side",
+      "Use CPAP if prescribed",
+      "Avoid alcohol before bed"
+    ],
+    "diet": [
+      "Healthy balanced diet",
+      "Lean protein",
+      "Whole grains",
+      "Vegetables"
+    ],
+    "doctor": "Sleep Medicine Specialist"
+  },
+
+  "Hypertension": {
+    "description": "A condition where blood pressure remains consistently high.",
+    "medicines": [
+      "Amlodipine",
+      "Losartan",
+      "Telmisartan"
+    ],
+    "precautions": [
+      "Reduce salt intake",
+      "Exercise regularly",
+      "Monitor blood pressure",
+      "Avoid smoking"
+    ],
+    "diet": [
+      "Low-salt diet",
+      "Leafy vegetables",
+      "Bananas",
+      "Oats"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Coronary Artery Disease": {
+    "description": "Narrowing of coronary arteries reducing blood flow to the heart.",
+    "medicines": [
+      "Aspirin",
+      "Atorvastatin",
+      "Clopidogrel"
+    ],
+    "precautions": [
+      "Exercise",
+      "Healthy diet",
+      "Avoid smoking",
+      "Control cholesterol"
+    ],
+    "diet": [
+      "Oats",
+      "Fish",
+      "Olive oil",
+      "Vegetables"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Heart Failure": {
+    "description": "A condition where the heart cannot pump blood effectively.",
+    "medicines": [
+      "Furosemide",
+      "Enalapril",
+      "Bisoprolol"
+    ],
+    "precautions": [
+      "Limit salt",
+      "Monitor weight",
+      "Take medicines regularly",
+      "Exercise moderately"
+    ],
+    "diet": [
+      "Low-sodium foods",
+      "Vegetables",
+      "Whole grains",
+      "Lean protein"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Arrhythmia": {
+    "description": "An abnormal heart rhythm.",
+    "medicines": [
+      "Amiodarone",
+      "Metoprolol"
+    ],
+    "precautions": [
+      "Reduce caffeine",
+      "Take medicines regularly",
+      "Regular ECG",
+      "Avoid smoking"
+    ],
+    "diet": [
+      "Heart-healthy diet",
+      "Vegetables",
+      "Whole grains",
+      "Fresh fruits"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Angina": {
+    "description": "Chest pain caused by reduced blood flow to the heart.",
+    "medicines": [
+      "Nitroglycerin",
+      "Aspirin",
+      "Metoprolol"
+    ],
+    "precautions": [
+      "Avoid heavy exertion",
+      "Take prescribed medicines",
+      "Reduce stress",
+      "Regular checkups"
+    ],
+    "diet": [
+      "Low-fat foods",
+      "Fish",
+      "Whole grains",
+      "Vegetables"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Cardiomyopathy": {
+    "description": "Disease of the heart muscle affecting pumping function.",
+    "medicines": [
+      "Beta Blockers",
+      "ACE Inhibitors"
+    ],
+    "precautions": [
+      "Avoid alcohol",
+      "Exercise moderately",
+      "Monitor symptoms",
+      "Regular follow-up"
+    ],
+    "diet": [
+      "Low-sodium foods",
+      "Lean protein",
+      "Vegetables",
+      "Fruits"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Myocardial Infarction": {
+    "description": "Heart attack caused by blocked blood flow to the heart muscle.",
+    "medicines": [
+      "Aspirin",
+      "Clopidogrel",
+      "Atorvastatin"
+    ],
+    "precautions": [
+      "Emergency treatment",
+      "Cardiac rehabilitation",
+      "Stop smoking",
+      "Regular follow-up"
+    ],
+    "diet": [
+      "Low-fat foods",
+      "Whole grains",
+      "Fish",
+      "Vegetables"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Valve Disease": {
+    "description": "Damage or malfunction of one or more heart valves.",
+    "medicines": [
+      "Diuretics",
+      "ACE Inhibitors"
+    ],
+    "precautions": [
+      "Regular heart checkups",
+      "Take medicines",
+      "Healthy lifestyle",
+      "Exercise as advised"
+    ],
+    "diet": [
+      "Low-sodium diet",
+      "Whole grains",
+      "Vegetables",
+      "Fruits"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Pericarditis": {
+    "description": "Inflammation of the sac surrounding the heart.",
+    "medicines": [
+      "Ibuprofen",
+      "Colchicine"
+    ],
+    "precautions": [
+      "Rest",
+      "Avoid strenuous activity",
+      "Regular monitoring",
+      "Take prescribed medicines"
+    ],
+    "diet": [
+      "Balanced diet",
+      "Vegetables",
+      "Fruits",
+      "Whole grains"
+    ],
+    "doctor": "Cardiologist"
+  },
+
+  "Atherosclerosis": {
+    "description": "Hardening and narrowing of arteries due to plaque buildup.",
+    "medicines": [
+      "Atorvastatin",
+      "Aspirin"
+    ],
+    "precautions": [
+      "Stop smoking",
+      "Exercise",
+      "Healthy diet",
+      "Control cholesterol"
+    ],
+    "diet": [
+      "Oats",
+      "Fish",
+      "Vegetables",
+      "Fruits"
+    ],
+    "doctor": "Cardiologist"
+  },  "Gastritis": {
+    "description": "Inflammation of the stomach lining causing pain, nausea, and indigestion.",
+    "symptoms": ["abdominal pain", "nausea", "vomiting", "loss of appetite"],
+    "medicines": ["Omeprazole", "Pantoprazole", "Antacids"],
+    "precautions": ["Avoid spicy food", "Eat small meals", "Avoid alcohol", "Reduce stress"],
+    "diet": ["Oatmeal", "Bananas", "Rice", "Boiled vegetables"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "GERD": {
+    "description": "Acid reflux disease where stomach acid frequently flows back into the esophagus.",
+    "symptoms": ["chest pain", "nausea", "abdominal pain"],
+    "medicines": ["Pantoprazole", "Omeprazole", "Antacids"],
+    "precautions": ["Avoid late-night meals", "Sleep with head elevated", "Avoid spicy food", "Lose weight if needed"],
+    "diet": ["Oatmeal", "Bananas", "Leafy vegetables", "Low-fat yogurt"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "Peptic Ulcer": {
+    "description": "Open sores developing in the stomach lining or upper small intestine.",
+    "symptoms": ["abdominal pain", "nausea", "vomiting"],
+    "medicines": ["Pantoprazole", "Amoxicillin", "Clarithromycin"],
+    "precautions": ["Avoid NSAIDs", "Quit smoking", "Avoid alcohol", "Complete medications"],
+    "diet": ["Boiled vegetables", "Rice", "Bananas", "Milk"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "Food Poisoning": {
+    "description": "Illness caused by contaminated food or drinks.",
+    "symptoms": ["vomiting", "diarrhea", "nausea", "fever", "abdominal pain"],
+    "medicines": ["ORS", "Ondansetron", "Paracetamol"],
+    "precautions": ["Drink fluids", "Maintain hygiene", "Eat fresh food", "Rest"],
+    "diet": ["ORS", "Bananas", "Rice", "Toast"],
+    "doctor": "General Physician"
+  },
+
+  "Irritable Bowel Syndrome": {
+    "description": "A chronic digestive disorder affecting the large intestine.",
+    "symptoms": ["abdominal pain", "diarrhea", "nausea"],
+    "medicines": ["Dicyclomine", "Loperamide", "Probiotics"],
+    "precautions": ["Reduce stress", "Eat slowly", "Exercise", "Avoid trigger foods"],
+    "diet": ["Oats", "Brown rice", "Yogurt", "Vegetables"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "Crohn's Disease": {
+    "description": "Inflammatory bowel disease causing digestive tract inflammation.",
+    "symptoms": ["abdominal pain", "diarrhea", "weight loss", "fatigue"],
+    "medicines": ["Prednisolone", "Mesalamine", "Azathioprine"],
+    "precautions": ["Avoid smoking", "Regular follow-up", "Healthy diet", "Exercise"],
+    "diet": ["Soft foods", "Lean protein", "Rice", "Bananas"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "Ulcerative Colitis": {
+    "description": "Inflammatory bowel disease affecting the colon.",
+    "symptoms": ["diarrhea", "abdominal pain", "fatigue"],
+    "medicines": ["Mesalamine", "Prednisolone"],
+    "precautions": ["Regular medication", "Avoid spicy food", "Stress management", "Stay hydrated"],
+    "diet": ["Rice", "Soup", "Boiled vegetables", "Lean protein"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "Appendicitis": {
+    "description": "Inflammation of the appendix requiring immediate medical care.",
+    "symptoms": ["abdominal pain", "vomiting", "nausea", "fever"],
+    "medicines": ["Pain relievers", "Antibiotics"],
+    "precautions": ["Seek emergency care", "Avoid eating before surgery", "Follow doctor's advice"],
+    "diet": ["Liquids after surgery", "Soft foods", "Protein-rich meals"],
+    "doctor": "General Surgeon"
+  },
+
+  "Gallstones": {
+    "description": "Solid particles forming in the gallbladder.",
+    "symptoms": ["abdominal pain", "vomiting", "nausea"],
+    "medicines": ["Ursodeoxycholic Acid", "Pain relievers"],
+    "precautions": ["Avoid fatty foods", "Maintain healthy weight", "Exercise"],
+    "diet": ["Low-fat meals", "Fruits", "Vegetables", "Whole grains"],
+    "doctor": "General Surgeon"
+  },
+
+  "Pancreatitis": {
+    "description": "Inflammation of the pancreas.",
+    "symptoms": ["abdominal pain", "vomiting", "nausea", "fever"],
+    "medicines": ["Pain relievers", "IV fluids"],
+    "precautions": ["Avoid alcohol", "Low-fat diet", "Hospital treatment"],
+    "diet": ["Clear fluids", "Boiled vegetables", "Rice", "Lean protein"],
+    "doctor": "Gastroenterologist"
+  },
+
+  "Diabetes Type 1": {
+    "description": "An autoimmune disease causing little or no insulin production.",
+    "symptoms": ["frequent urination", "increased thirst", "weight loss", "fatigue", "blurred vision"],
+    "medicines": ["Insulin"],
+    "precautions": ["Monitor blood sugar", "Exercise", "Healthy diet", "Take insulin regularly"],
+    "diet": ["Whole grains", "Vegetables", "Lean protein", "Low sugar foods"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Diabetes Type 2": {
+    "description": "A metabolic disorder causing high blood sugar due to insulin resistance.",
+    "symptoms": ["frequent urination", "increased thirst", "fatigue", "blurred vision"],
+    "medicines": ["Metformin", "Glimepiride"],
+    "precautions": ["Exercise daily", "Lose weight", "Monitor glucose", "Healthy lifestyle"],
+    "diet": ["Whole grains", "Vegetables", "Nuts", "Lean protein"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Hyperthyroidism": {
+    "description": "Overactive thyroid gland producing excessive hormones.",
+    "symptoms": ["weight loss", "sweating", "fatigue"],
+    "medicines": ["Methimazole", "Propylthiouracil"],
+    "precautions": ["Regular thyroid tests", "Avoid excess iodine", "Take medicines regularly"],
+    "diet": ["Calcium-rich foods", "Leafy vegetables", "Protein-rich meals"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Hypothyroidism": {
+    "description": "Underactive thyroid gland causing slow metabolism.",
+    "symptoms": ["fatigue", "weight loss", "dizziness"],
+    "medicines": ["Levothyroxine"],
+    "precautions": ["Take medicine daily", "Regular thyroid checkups", "Exercise"],
+    "diet": ["Whole grains", "Vegetables", "Fruits", "Lean protein"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Goiter": {
+    "description": "Abnormal enlargement of the thyroid gland.",
+    "symptoms": ["fatigue", "dizziness"],
+    "medicines": ["Levothyroxine"],
+    "precautions": ["Regular monitoring", "Follow treatment", "Balanced diet"],
+    "diet": ["Seafood", "Milk", "Eggs", "Vegetables"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Cushing Syndrome": {
+    "description": "A disorder caused by prolonged exposure to high cortisol levels.",
+    "symptoms": ["weight loss", "fatigue", "high fever"],
+    "medicines": ["Ketoconazole", "Metyrapone"],
+    "precautions": ["Regular monitoring", "Exercise", "Healthy diet"],
+    "diet": ["Low salt foods", "Protein-rich diet", "Vegetables"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Addison Disease": {
+    "description": "A disorder where the adrenal glands produce insufficient hormones.",
+    "symptoms": ["fatigue", "weight loss", "dizziness"],
+    "medicines": ["Hydrocortisone", "Fludrocortisone"],
+    "precautions": ["Take medicines regularly", "Avoid stress", "Regular checkups"],
+    "diet": ["Protein-rich foods", "Whole grains", "Vegetables"],
+    "doctor": "Endocrinologist"
+  },
+
+  "PCOS": {
+    "description": "A hormonal disorder affecting women of reproductive age.",
+    "symptoms": ["weight loss", "fatigue"],
+    "medicines": ["Metformin", "Oral Contraceptives"],
+    "precautions": ["Exercise", "Weight management", "Healthy diet"],
+    "diet": ["Whole grains", "Vegetables", "Lean protein"],
+    "doctor": "Gynecologist"
+  },
+
+  "Obesity": {
+    "description": "Excessive body fat increasing health risks.",
+    "symptoms": ["fatigue", "shortness_of_breath"],
+    "medicines": ["Orlistat"],
+    "precautions": ["Exercise", "Reduce calorie intake", "Healthy lifestyle"],
+    "diet": ["Low-calorie foods", "Vegetables", "Fruits", "Lean protein"],
+    "doctor": "Endocrinologist"
+  },
+
+  "Metabolic Syndrome": {
+    "description": "A group of conditions increasing the risk of heart disease and diabetes.",
+    "symptoms": ["fatigue", "frequent urination", "increased thirst"],
+    "medicines": ["Metformin", "Atorvastatin"],
+    "precautions": ["Exercise", "Weight management", "Healthy diet", "Regular checkups"],
+    "diet": ["Whole grains", "Vegetables", "Fish", "Nuts"],
+    "doctor": "Endocrinologist"
+  },
+  
+  "Chronic Kidney Disease": {
+    "description": "A gradual loss of kidney function over time.",
+    "medicines": ["ACE inhibitors", "Diuretics", "Erythropoietin"],
+    "precautions": [
+      "Control blood pressure",
+      "Reduce salt intake",
+      "Drink adequate water",
+      "Avoid smoking"
+    ],
+    "diet": [
+      "Low sodium foods",
+      "Controlled protein",
+      "Fresh fruits",
+      "Vegetables"
+    ],
+    "doctor": "Nephrologist"
+  },
+
+  "Kidney Stone": {
+    "description": "Hard mineral deposits formed inside kidneys.",
+    "medicines": ["Pain relievers", "Tamsulosin"],
+    "precautions": [
+      "Drink plenty of water",
+      "Reduce salt",
+      "Limit oxalate foods"
+    ],
+    "diet": [
+      "Water",
+      "Lemon juice",
+      "Low salt foods"
+    ],
+    "doctor": "Urologist"
+  },
+
+  "Urinary Tract Infection": {
+    "description": "Bacterial infection affecting urinary system.",
+    "medicines": ["Nitrofurantoin", "Trimethoprim"],
+    "precautions": [
+      "Drink water",
+      "Maintain hygiene",
+      "Do not hold urine"
+    ],
+    "diet": [
+      "Cranberry juice",
+      "Water",
+      "Vitamin C fruits"
+    ],
+    "doctor": "Urologist"
+  },
+
+  "Acute Kidney Injury": {
+    "description": "Sudden decrease in kidney function.",
+    "medicines": ["IV fluids", "Diuretics"],
+    "precautions": [
+      "Monitor kidney function",
+      "Avoid dehydration"
+    ],
+    "diet": [
+      "Low potassium foods",
+      "Low sodium diet"
+    ],
+    "doctor": "Nephrologist"
+  },
+
+  "Bladder Infection": {
+    "description": "Infection of the bladder caused by bacteria.",
+    "medicines": ["Antibiotics"],
+    "precautions": [
+      "Drink water",
+      "Complete antibiotics"
+    ],
+    "diet": [
+      "Water",
+      "Cranberry juice"
+    ],
+    "doctor": "Urologist"
+  },
+
+  "Migraine": {
+    "description": "A neurological condition causing severe headaches.",
+    "medicines": ["Sumatriptan", "Ibuprofen"],
+    "precautions": [
+      "Avoid triggers",
+      "Sleep well",
+      "Reduce stress"
+    ],
+    "diet": [
+      "Water",
+      "Magnesium-rich foods"
+    ],
+    "doctor": "Neurologist"
+  },
+
+  "Epilepsy": {
+    "description": "Neurological disorder causing recurrent seizures.",
+    "medicines": ["Valproate", "Levetiracetam"],
+    "precautions": [
+      "Take medicines regularly",
+      "Avoid alcohol",
+      "Sleep properly"
+    ],
+    "diet": [
+      "Balanced diet",
+      "Ketogenic diet (doctor advice)"
+    ],
+    "doctor": "Neurologist"
+  },
+
+  "Parkinson Disease": {
+    "description": "Progressive nervous system disorder affecting movement.",
+    "medicines": ["Levodopa", "Carbidopa"],
+    "precautions": [
+      "Exercise regularly",
+      "Physical therapy"
+    ],
+    "diet": [
+      "High fiber",
+      "Whole grains"
+    ],
+    "doctor": "Neurologist"
+  },
+
+  "Alzheimer Disease": {
+    "description": "Progressive disorder causing memory loss.",
+    "medicines": ["Donepezil", "Memantine"],
+    "precautions": [
+      "Mental exercises",
+      "Healthy lifestyle"
+    ],
+    "diet": [
+      "Mediterranean diet",
+      "Fish",
+      "Vegetables"
+    ],
+    "doctor": "Neurologist"
+  },
+
+  "Stroke": {
+    "description": "Interruption of blood supply to the brain.",
+    "medicines": ["Aspirin", "Clopidogrel"],
+    "precautions": [
+      "Control BP",
+      "Exercise",
+      "Avoid smoking"
+    ],
+    "diet": [
+      "Low fat diet",
+      "Vegetables"
+    ],
+    "doctor": "Neurologist"
+  },
+
+  "Depression": {
+    "description": "Mental health disorder causing persistent sadness.",
+    "medicines": ["Sertraline", "Fluoxetine"],
+    "precautions": [
+      "Counseling",
+      "Exercise",
+      "Adequate sleep"
+    ],
+    "diet": [
+      "Omega-3 foods",
+      "Fresh fruits"
+    ],
+    "doctor": "Psychiatrist"
+  },
+
+  "Anxiety Disorder": {
+    "description": "Mental health disorder characterized by excessive worry.",
+    "medicines": ["Escitalopram", "Buspirone"],
+    "precautions": [
+      "Meditation",
+      "Exercise",
+      "Avoid caffeine"
+    ],
+    "diet": [
+      "Green vegetables",
+      "Whole grains"
+    ],
+    "doctor": "Psychiatrist"
+  },
+
+  "Insomnia": {
+    "description": "Difficulty falling or staying asleep.",
+    "medicines": ["Melatonin"],
+    "precautions": [
+      "Maintain sleep schedule",
+      "Avoid screens"
+    ],
+    "diet": [
+      "Warm milk",
+      "Bananas"
+    ],
+    "doctor": "Psychiatrist"
+  },
+
+  "Conjunctivitis": {
+    "description": "Inflammation of the eye conjunctiva.",
+    "medicines": ["Eye drops"],
+    "precautions": [
+      "Avoid touching eyes",
+      "Wash hands"
+    ],
+    "diet": [
+      "Vitamin A foods"
+    ],
+    "doctor": "Ophthalmologist"
+  },
+
+  "Cataract": {
+    "description": "Clouding of the eye lens.",
+    "medicines": [],
+    "precautions": [
+      "Protect eyes from sunlight"
+    ],
+    "diet": [
+      "Leafy vegetables"
+    ],
+    "doctor": "Ophthalmologist"
+  },
+
+  "Glaucoma": {
+    "description": "Damage to optic nerve due to increased eye pressure.",
+    "medicines": ["Timolol Eye Drops"],
+    "precautions": [
+      "Regular eye checkups"
+    ],
+    "diet": [
+      "Leafy vegetables"
+    ],
+    "doctor": "Ophthalmologist"
+  },
+
+  "Otitis Media": {
+    "description": "Middle ear infection.",
+    "medicines": ["Amoxicillin"],
+    "precautions": [
+      "Keep ears dry"
+    ],
+    "diet": [
+      "Vitamin C foods"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Hearing Loss": {
+    "description": "Partial or complete inability to hear.",
+    "medicines": [],
+    "precautions": [
+      "Avoid loud sounds"
+    ],
+    "diet": [
+      "Balanced diet"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Vertigo": {
+    "description": "Sensation of spinning or dizziness.",
+    "medicines": ["Betahistine"],
+    "precautions": [
+      "Avoid sudden movements"
+    ],
+    "diet": [
+      "Hydration",
+      "Low salt diet"
+    ],
+    "doctor": "ENT Specialist"
+  },
+
+  "Bell Palsy": {
+    "description": "Temporary weakness of facial muscles.",
+    "medicines": ["Prednisolone"],
+    "precautions": [
+      "Eye protection",
+      "Facial exercises"
+    ],
+    "diet": [
+      "Balanced diet"
+    ],
+    "doctor": "Neurologist"
+  }
+}
+  
