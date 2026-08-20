@@ -7,15 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node
+node_modules/
+dist/
+dist-ssr/
 *.local
 
-# Editor directories and files
-.vscode/*
+# Editor
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -34,17 +35,7 @@ venv/
 env/
 ENV/
 
-# Node
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# React build
-frontend/build/
-frontend/dist/
-
-# Environment/secrets
+# Environment / secrets
 .env
 .env.*
 !.env.example
@@ -54,20 +45,10 @@ frontend/dist/
 .pytest_cache/
 .mypy_cache/
 
-# IDE
-.vscode/
-.idea/
-
 # Database
 *.db
 *.sqlite
 *.sqlite3
 
-# ML generated files
-*.pkl
-*.h5
-*.keras
-
 # OS
-.DS_Store
 Thumbs.db
