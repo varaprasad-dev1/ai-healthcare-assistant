@@ -9,6 +9,7 @@ print("Loading AI modules...")
 from predictor.predictor import predict
 from chatbot.chatbot import ask_chatbot
 from medicines.medicine_service import get_medicine
+from image_predictor import analyze_skin_image
 
 print("AI modules loaded.")
 
@@ -63,6 +64,7 @@ def register():
         }), 201
 
     except Exception as e:
+
         db.session.rollback()
 
         return jsonify({
@@ -118,6 +120,7 @@ def login():
         })
 
     except Exception as e:
+
         return jsonify({
             "success": False,
             "message": str(e)
@@ -138,16 +141,14 @@ def dashboard():
 
 
 # =====================================================
-# DISEASE PREDICTION
-# =====================================================
-# =====================================================
-# DISEASE PREDICTION
+# DISEASE PREDICTION FROM SYMPTOMS
 # =====================================================
 @api.route("/predict", methods=["GET", "POST"])
 def predict_route():
 
-    # Browser request
+    # GET request
     if request.method == "GET":
+
         return jsonify({
             "success": True,
             "message": "Predict API is working.",
@@ -167,6 +168,7 @@ def predict_route():
 
     # POST request
     try:
+
         data = request.get_json()
 
         if not data:
@@ -191,10 +193,68 @@ def predict_route():
         }), 200
 
     except Exception as e:
+
         return jsonify({
             "success": False,
             "message": str(e)
         }), 500
+
+
+# =====================================================
+# AI SKIN IMAGE ANALYSIS
+# =====================================================
+@api.route("/predict-image", methods=["POST"])
+def predict_image():
+
+    try:
+
+        # Check whether an image was uploaded
+        if "image" not in request.files:
+
+            return jsonify({
+                "success": False,
+                "message": "No image uploaded"
+            }), 400
+
+        image = request.files["image"]
+
+        # Check filename
+        if image.filename == "":
+
+            return jsonify({
+                "success": False,
+                "message": "No image selected"
+            }), 400
+
+        # Supported image formats
+        allowed_types = {
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        }
+
+        if image.content_type not in allowed_types:
+
+            return jsonify({
+                "success": False,
+                "message": "Only JPG, PNG, and WEBP images are supported"
+            }), 400
+
+        # Send image to AI
+        result = analyze_skin_image(image)
+
+        return jsonify({
+            "success": True,
+            "result": result
+        }), 200
+
+    except Exception as e:
+
+        return jsonify({
+            "success": False,
+            "message": str(e)
+        }), 500
+
 
 # =====================================================
 # AI CHATBOT
@@ -203,15 +263,24 @@ def predict_route():
 def chatbot():
 
     try:
+
         data = request.get_json()
 
         if not data:
+
             return jsonify({
                 "success": False,
                 "reply": "No JSON received"
             }), 400
 
-        message = data.get("message", "")
+        message = data.get("message", "").strip()
+
+        if not message:
+
+            return jsonify({
+                "success": False,
+                "reply": "Message is required"
+            }), 400
 
         reply = ask_chatbot(message)
 
@@ -221,6 +290,7 @@ def chatbot():
         })
 
     except Exception as e:
+
         return jsonify({
             "success": False,
             "reply": str(e)
@@ -234,15 +304,24 @@ def chatbot():
 def medicine():
 
     try:
+
         data = request.get_json()
 
         if not data:
+
             return jsonify({
                 "success": False,
                 "message": "No JSON received"
             }), 400
 
-        disease = data.get("disease", "")
+        disease = data.get("disease", "").strip()
+
+        if not disease:
+
+            return jsonify({
+                "success": False,
+                "message": "Disease is required"
+            }), 400
 
         result = get_medicine(disease)
 
@@ -252,6 +331,7 @@ def medicine():
         })
 
     except Exception as e:
+
         return jsonify({
             "success": False,
             "message": str(e)

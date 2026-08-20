@@ -1,661 +1,302 @@
-
 import os
 import json
-import joblib
-import pandas as pd
+
+from dotenv import load_dotenv
+from google import genai
 
 
-# ============================================================
-# PATHS
-# ============================================================
+# =====================================================
+# LOAD ENVIRONMENT VARIABLES
+# =====================================================
 
-CURRENT_DIR = os.path.dirname(
-    os.path.abspath(__file__)
-)
+load_dotenv()
 
-BACKEND_DIR = os.path.dirname(
-    CURRENT_DIR
-)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-MODEL_PATH = os.path.join(
-    BACKEND_DIR,
-    "ml",
-    "disease_model.pkl"
-)
-
-ENCODER_PATH = os.path.join(
-    BACKEND_DIR,
-    "ml",
-    "label_encoder.pkl"
-)
-
-DATASET_PATH = os.path.join(
-    BACKEND_DIR,
-    "dataset",
-    "disease_dataset.csv"
-)
-
-DISEASE_FILE = os.path.join(
-    BACKEND_DIR,
-    "data",
-    "diseases.json"
-)
-
-
-# ============================================================
-# FEATURES
-# ============================================================
-
-FEATURES = [
-    "fever",
-    "cough",
-    "headache",
-    "vomiting",
-    "chest_pain",
-    "fatigue",
-    "body_pain",
-    "sore_throat",
-    "runny_nose",
-    "shortness_of_breath",
-    "loss_of_taste",
-    "loss_of_smell",
-    "diarrhea",
-    "nausea",
-    "abdominal_pain",
-    "dizziness",
-    "rash",
-    "itching",
-    "joint_pain",
-    "high_fever",
-    "chills",
-    "sweating",
-    "weight_loss",
-    "frequent_urination",
-    "increased_thirst",
-    "blurred_vision",
-    "yellow_skin",
-    "dark_urine",
-    "swollen_lymph_nodes"
-]
-
-
-# ============================================================
-# SYMPTOM ALIASES
-# ============================================================
-
-SYMPTOM_ALIASES = {
-
-    "high fever": "high_fever",
-    "high-fever": "high_fever",
-
-    "chest pain": "chest_pain",
-
-    "body pain": "body_pain",
-
-    "sore throat": "sore_throat",
-
-    "runny nose": "runny_nose",
-
-    "shortness of breath":
-        "shortness_of_breath",
-
-    "difficulty breathing":
-        "shortness_of_breath",
-
-    "breathing difficulty":
-        "shortness_of_breath",
-
-    "loss of taste":
-        "loss_of_taste",
-
-    "loss of smell":
-        "loss_of_smell",
-
-    "abdominal pain":
-        "abdominal_pain",
-
-    "stomach pain":
-        "abdominal_pain",
-
-    "joint pain":
-        "joint_pain",
-
-    "weight loss":
-        "weight_loss",
-
-    "frequent urination":
-        "frequent_urination",
-
-    "increased thirst":
-        "increased_thirst",
-
-    "blurred vision":
-        "blurred_vision",
-
-    "yellow skin":
-        "yellow_skin",
-
-    "dark urine":
-        "dark_urine",
-
-    "swollen lymph nodes":
-        "swollen_lymph_nodes"
-}
-
-
-# ============================================================
-# LOAD MODEL
-# ============================================================
-
-print(
-    "Loading disease prediction model..."
-)
-
-if not os.path.exists(MODEL_PATH):
-
-    raise FileNotFoundError(
-        f"Model not found:\n{MODEL_PATH}"
-    )
-
-if not os.path.exists(ENCODER_PATH):
-
-    raise FileNotFoundError(
-        f"Encoder not found:\n{ENCODER_PATH}"
-    )
-
-model = joblib.load(
-    MODEL_PATH
-)
-
-encoder = joblib.load(
-    ENCODER_PATH
-)
-
-print(
-    "Disease prediction model loaded."
-)
-
-
-# ============================================================
-# LOAD DATASET
-#
-# Used only to calculate disease symptom profiles.
-# ============================================================
-
-if not os.path.exists(DATASET_PATH):
-
-    raise FileNotFoundError(
-        f"Dataset not found:\n{DATASET_PATH}"
-    )
-
-dataset = pd.read_csv(
-    DATASET_PATH
-)
-
-
-# Make sure all features exist.
-
-missing_features = [
-    feature
-    for feature in FEATURES
-    if feature not in dataset.columns
-]
-
-if missing_features:
-
+if not GEMINI_API_KEY:
     raise ValueError(
-        "Dataset is missing features: "
-        + str(missing_features)
+        "GEMINI_API_KEY is missing from backend/.env"
     )
 
 
-# ============================================================
-# CREATE DISEASE PROFILES
-# ============================================================
+# =====================================================
+# GEMINI CLIENT
+# =====================================================
 
-profile_columns = FEATURES
-
-disease_profiles = (
-    dataset
-    .groupby("disease")[profile_columns]
-    .mean()
+client = genai.Client(
+    api_key=GEMINI_API_KEY
 )
 
 
-# ============================================================
-# LOAD DISEASE INFORMATION
-# ============================================================
-
-if os.path.exists(
-    DISEASE_FILE
-):
-
-    with open(
-        DISEASE_FILE,
-        "r",
-        encoding="utf-8"
-    ) as file:
-
-        disease_db = json.load(
-            file
-        )
-
-    print(
-        f"Disease information loaded: "
-        f"{len(disease_db)} diseases"
-    )
-
-else:
-
-    print(
-        "WARNING: diseases.json not found."
-    )
-
-    disease_db = {}
-
-
-# ============================================================
-# NORMALIZE SYMPTOM
-# ============================================================
-
-def normalize_symptom(symptom):
-
-    symptom = str(
-        symptom
-    ).strip().lower()
-
-    symptom = symptom.replace(
-        "-",
-        " "
-    )
-
-    symptom = " ".join(
-        symptom.split()
-    )
-
-    if symptom in SYMPTOM_ALIASES:
-
-        return SYMPTOM_ALIASES[
-            symptom
-        ]
-
-    return symptom.replace(
-        " ",
-        "_"
-    )
-
-
-# ============================================================
-# PARSE SYMPTOMS
-# ============================================================
-
-def parse_symptoms(symptoms):
-
-    if isinstance(
-        symptoms,
-        str
-    ):
-
-        raw = symptoms.split(",")
-
-    elif isinstance(
-        symptoms,
-        list
-    ):
-
-        raw = symptoms
-
-    else:
-
-        return []
-
-    result = []
-
-    for symptom in raw:
-
-        normalized = normalize_symptom(
-            symptom
-        )
-
-        if normalized in FEATURES:
-
-            result.append(
-                normalized
-            )
-
-    return list(
-        dict.fromkeys(result)
-    )
-
-
-# ============================================================
-# CREATE MODEL INPUT
-# ============================================================
-
-def create_input(symptoms):
-
-    row = {}
-
-    for feature in FEATURES:
-
-        row[feature] = (
-            1
-            if feature in symptoms
-            else 0
-        )
-
-    return pd.DataFrame(
-        [row],
-        columns=FEATURES
-    )
-
-
-# ============================================================
-# SYMPTOM MATCH SCORE
-# ============================================================
-
-def calculate_match_scores(symptoms):
-
-    scores = {}
-
-    for disease in disease_profiles.index:
-
-        profile = disease_profiles.loc[
-            disease
-        ]
-
-        matched_values = []
-
-        for symptom in symptoms:
-
-            matched_values.append(
-                float(
-                    profile.get(
-                        symptom,
-                        0
-                    )
-                )
-            )
-
-        if not matched_values:
-
-            scores[disease] = 0.0
-
-        else:
-
-            # Average presence of the
-            # entered symptoms for this disease.
-            scores[disease] = (
-                sum(matched_values)
-                / len(matched_values)
-            )
-
-    return scores
-
-
-# ============================================================
-# DISEASE INFORMATION
-# ============================================================
-
-def get_disease_info(disease):
-
-    info = disease_db.get(
-        disease
-    )
-
-    if info is None:
-
-        for name, value in disease_db.items():
-
-            if str(name).lower() == str(
-                disease
-            ).lower():
-
-                info = value
-                break
-
-    if info is None:
-
-        info = {}
-
-    return {
-
-        "description":
-            info.get(
-                "description",
-                "No description available."
-            ),
-
-        "medicines":
-            info.get(
-                "medicines",
-                []
-            ),
-
-        "precautions":
-            info.get(
-                "precautions",
-                []
-            ),
-
-        "diet":
-            info.get(
-                "diet",
-                []
-            ),
-
-        "doctor":
-            info.get(
-                "doctor",
-                "General Physician"
-            )
-    }
-
-
-# ============================================================
-# MAIN PREDICTION FUNCTION
-# ============================================================
+# =====================================================
+# AI SYMPTOM ANALYSIS
+# =====================================================
 
 def predict(symptoms):
 
-    print(
-        "\n=============================="
-    )
+    # -------------------------------------------------
+    # Validate input
+    # -------------------------------------------------
 
-    print(
-        "Prediction request received"
-    )
+    if isinstance(symptoms, list):
 
-    parsed = parse_symptoms(
-        symptoms
-    )
+        symptom_text = ", ".join(
+            str(item).strip()
+            for item in symptoms
+            if str(item).strip()
+        )
 
-    print(
-        "Symptoms:",
-        parsed
-    )
+    elif isinstance(symptoms, str):
 
-    if not parsed:
+        symptom_text = symptoms.strip()
+
+    else:
 
         raise ValueError(
-            "No valid symptoms detected. "
-            "Please enter symptoms separated "
-            "by commas."
+            "Symptoms must be provided as text or a list."
         )
 
-    # --------------------------------------------------------
-    # Create input
-    # --------------------------------------------------------
+    if not symptom_text:
 
-    df = create_input(
-        parsed
+        raise ValueError(
+            "Please enter at least one symptom."
+        )
+
+    # -------------------------------------------------
+    # Gemini prompt
+    # -------------------------------------------------
+
+    prompt = f"""
+You are an AI healthcare assistant.
+
+The user has provided the following symptoms:
+
+{symptom_text}
+
+Analyze these symptoms carefully and provide an
+EDUCATIONAL health assessment.
+
+IMPORTANT MEDICAL SAFETY RULES:
+
+- This is NOT a confirmed medical diagnosis.
+- Do not claim certainty.
+- Consider multiple possible conditions when appropriate.
+- Do not invent symptoms that the user did not provide.
+- Do not prescribe prescription medicines.
+- Do not provide medication dosages.
+- Do not tell the user to start, stop, or change medication.
+- If symptoms could indicate something serious, recommend
+  appropriate professional medical evaluation.
+- Diet information must be general healthy lifestyle advice,
+  not a treatment or cure.
+- If there is not enough information to make a reasonable
+  assessment, clearly say so.
+
+Return ONLY valid JSON.
+
+The JSON MUST have exactly these fields:
+
+{{
+    "disease": "Most likely possible condition or conditions",
+    "description": "Simple explanation of the possible condition",
+    "medicines": [
+        "Safe general treatment information or recommendation to consult a doctor"
+    ],
+    "precautions": [
+        "Safe precaution 1",
+        "Safe precaution 2",
+        "Safe precaution 3"
+    ],
+    "diet": [
+        "General healthy diet/lifestyle advice 1",
+        "General healthy diet/lifestyle advice 2",
+        "General healthy diet/lifestyle advice 3"
+    ],
+    "doctor": "Recommended healthcare professional",
+    "confidence": "Low / Moderate / High",
+    "matched_symptoms": [
+        "Symptoms from the user's input that support the assessment"
+    ],
+    "message": "This is an educational AI assessment and not a confirmed medical diagnosis."
+}}
+
+FIELD REQUIREMENTS:
+
+disease:
+Give a possible condition based on the symptoms.
+If multiple conditions are reasonably possible, mention the
+main possibilities rather than pretending there is one certain
+diagnosis.
+
+description:
+Explain the possibility in simple language.
+
+medicines:
+Do not prescribe.
+Instead, describe general treatment categories or recommend
+professional evaluation.
+
+precautions:
+Give practical and safe precautions relevant to the symptoms.
+
+diet:
+Give general healthy diet and lifestyle information only.
+
+doctor:
+Recommend an appropriate healthcare professional.
+
+confidence:
+Use ONLY:
+"Low"
+"Moderate"
+or
+"High"
+
+matched_symptoms:
+Include only symptoms that were actually supplied by the user.
+
+message:
+Always include the medical disclaimer.
+"""
+
+    # -------------------------------------------------
+    # Send request to Gemini
+    # -------------------------------------------------
+
+    response = client.models.generate_content(
+        model="gemini-3.6-flash",
+        contents=prompt
     )
 
-    # --------------------------------------------------------
-    # ML prediction probabilities
-    # --------------------------------------------------------
+    result_text = response.text.strip()
 
-    probabilities = model.predict_proba(
-        df
-    )[0]
+    # -------------------------------------------------
+    # Remove markdown JSON formatting if Gemini adds it
+    # -------------------------------------------------
 
-    classes = encoder.classes_
+    if result_text.startswith("```"):
 
-    ml_scores = {}
-
-    for index, disease in enumerate(
-        classes
-    ):
-
-        ml_scores[
-            disease
-        ] = float(
-            probabilities[index]
+        result_text = result_text.replace(
+            "```json",
+            ""
         )
 
-    # --------------------------------------------------------
-    # Direct symptom matching
-    # --------------------------------------------------------
+        result_text = result_text.replace(
+            "```",
+            ""
+        )
 
-    match_scores = calculate_match_scores(
-        parsed
+        result_text = result_text.strip()
+
+    # -------------------------------------------------
+    # Convert JSON to Python dictionary
+    # -------------------------------------------------
+
+    try:
+
+        result = json.loads(
+            result_text
+        )
+
+    except json.JSONDecodeError:
+
+        result = {
+            "disease": "Unable to determine",
+
+            "description":
+                result_text,
+
+            "medicines": [
+                "Please consult a qualified healthcare professional "
+                "for appropriate evaluation and treatment."
+            ],
+
+            "precautions": [
+                "Monitor your symptoms.",
+                "Avoid self-medicating.",
+                "Seek professional medical advice if symptoms persist "
+                "or worsen."
+            ],
+
+            "diet": [
+                "Maintain a balanced diet.",
+                "Stay adequately hydrated.",
+                "Get adequate rest."
+            ],
+
+            "doctor":
+                "General Physician",
+
+            "confidence":
+                "Low",
+
+            "matched_symptoms":
+                symptom_text.split(","),
+
+            "message":
+                "This is an educational AI assessment and not "
+                "a confirmed medical diagnosis."
+        }
+
+    # -------------------------------------------------
+    # Ensure required fields exist
+    # -------------------------------------------------
+
+    result.setdefault(
+        "disease",
+        "Unable to determine"
     )
 
-    # --------------------------------------------------------
-    # Combine both signals
-    #
-    # ML = 55%
-    # Symptom profile = 45%
-    # --------------------------------------------------------
-
-    final_scores = {}
-
-    for disease in classes:
-
-        ml_score = ml_scores.get(
-            disease,
-            0.0
-        )
-
-        symptom_score = match_scores.get(
-            disease,
-            0.0
-        )
-
-        final_scores[disease] = (
-            0.55 * ml_score
-            +
-            0.45 * symptom_score
-        )
-
-    # --------------------------------------------------------
-    # Sort diseases by combined score
-    # --------------------------------------------------------
-
-    ranked = sorted(
-        final_scores.items(),
-        key=lambda item: item[1],
-        reverse=True
+    result.setdefault(
+        "description",
+        "Please consult a qualified healthcare professional."
     )
 
-    best_disease = ranked[0][0]
-
-    best_score = ranked[0][1]
-
-    # --------------------------------------------------------
-    # Information
-    # --------------------------------------------------------
-
-    info = get_disease_info(
-        best_disease
-    )
-
-    # --------------------------------------------------------
-    # Matched symptoms
-    # --------------------------------------------------------
-
-    matched = []
-
-    if best_disease in disease_profiles.index:
-
-        profile = disease_profiles.loc[
-            best_disease
+    result.setdefault(
+        "medicines",
+        [
+            "Consult a qualified healthcare professional "
+            "before using medication."
         ]
-
-        for symptom in parsed:
-
-            if profile.get(
-                symptom,
-                0
-            ) >= 0.25:
-
-                matched.append(
-                    symptom
-                )
-
-    # --------------------------------------------------------
-    # Convert score to percentage
-    # --------------------------------------------------------
-
-    confidence = round(
-        best_score * 100,
-        2
     )
 
-    result = {
-
-        "disease":
-            best_disease,
-
-        "description":
-            info["description"],
-
-        "medicines":
-            info["medicines"],
-
-        "precautions":
-            info["precautions"],
-
-        "diet":
-            info["diet"],
-
-        "doctor":
-            info["doctor"],
-
-        "symptoms":
-            parsed,
-
-        "matched_symptoms":
-            matched,
-
-        "confidence":
-            confidence,
-
-        "message":
-            "This is an AI-generated health indication, "
-            "not a medical diagnosis. Consult a qualified "
-            "healthcare professional for proper evaluation."
-    }
-
-    print(
-        "Predicted disease:",
-        best_disease
+    result.setdefault(
+        "precautions",
+        [
+            "Monitor your symptoms.",
+            "Avoid self-medication.",
+            "Seek professional medical advice if symptoms worsen."
+        ]
     )
 
-    print(
-        "Confidence:",
-        confidence,
-        "%"
+    result.setdefault(
+        "diet",
+        [
+            "Maintain a balanced diet.",
+            "Stay adequately hydrated.",
+            "Get adequate rest."
+        ]
     )
 
-    print(
-        "Matched symptoms:",
-        matched
+    result.setdefault(
+        "doctor",
+        "General Physician"
     )
 
-    print(
-        "==============================\n"
+    result.setdefault(
+        "confidence",
+        "Low"
+    )
+
+    result.setdefault(
+        "matched_symptoms",
+        []
+    )
+
+    result.setdefault(
+        "message",
+        "This is an educational AI assessment and not "
+        "a confirmed medical diagnosis."
     )
 
     return result
-

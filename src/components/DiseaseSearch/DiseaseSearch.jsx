@@ -14,9 +14,10 @@ const DiseaseSearch = ({ setResult }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // ====================================
-  // Disease Prediction
+  // Disease Prediction from Symptoms
   // ====================================
 
   const handleSearch = async () => {
@@ -27,27 +28,26 @@ const DiseaseSearch = ({ setResult }) => {
 
     try {
       setLoading(true);
-
-      console.log("Sending Symptoms:", symptoms);
+      setError("");
 
       const response = await API.post("/predict", {
         symptoms: symptoms,
       });
 
-      console.log("Response:", response.data);
+      console.log("Disease prediction:", response.data);
 
       if (response.data.success) {
         setResult(response.data.result);
       } else {
-        alert(response.data.message);
+        setError(response.data.message || "Prediction failed.");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Disease prediction error:", err);
 
-      if (err.response) {
-        alert(err.response.data.message);
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
       } else {
-        alert("Unable to connect to backend.");
+        setError("Unable to connect to backend.");
       }
     } finally {
       setLoading(false);
@@ -55,7 +55,7 @@ const DiseaseSearch = ({ setResult }) => {
   };
 
   // ====================================
-  // Select Image
+  // Select Medical Image
   // ====================================
 
   const handleImageChange = (e) => {
@@ -63,17 +63,30 @@ const DiseaseSearch = ({ setResult }) => {
 
     if (!file) return;
 
+    // Check image type
+    if (!file.type.startsWith("image/")) {
+      alert("Please select a valid image.");
+      return;
+    }
+
+    // Optional size limit: 10 MB
+    if (file.size > 10 * 1024 * 1024) {
+      alert("Please select an image smaller than 10 MB.");
+      return;
+    }
+
     setImage(file);
     setPreview(URL.createObjectURL(file));
+    setError("");
   };
 
   // ====================================
-  // Image Prediction
+  // AI Image Prediction
   // ====================================
 
   const handleImageUpload = async () => {
     if (!image) {
-      alert("Please select an image.");
+      alert("Please select an image first.");
       return;
     }
 
@@ -83,45 +96,73 @@ const DiseaseSearch = ({ setResult }) => {
 
     try {
       setLoading(true);
+      setError("");
+
+      console.log("Sending image to Gemini AI...");
 
       const response = await API.post(
         "/predict-image",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        formData
       );
+
+      console.log("Gemini image response:", response.data);
 
       if (response.data.success) {
         setResult(response.data.result);
       } else {
-        setResult(response.data);
+        setError(
+          response.data.message || "Image analysis failed."
+        );
       }
     } catch (err) {
-      console.error(err);
-      alert("Image prediction failed.");
+      console.error("Image prediction error:", err);
+
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError(
+          "Unable to connect to the AI image analysis service."
+        );
+      }
     } finally {
       setLoading(false);
     }
   };
 
+  // ====================================
+  // Remove Selected Image
+  // ====================================
+
+  const handleRemoveImage = () => {
+    setImage(null);
+    setPreview(null);
+    setError("");
+  };
+
+  // ====================================
+  // UI
+  // ====================================
+
   return (
     <section className="disease-search">
-
       <div className="search-container">
 
         <h2>AI Disease Prediction</h2>
 
         <p>
-          Enter symptoms or upload a medical image.
+          Enter your symptoms or upload a medical image
+          for AI-assisted analysis.
         </p>
+
+        {/* ====================================
+            SYMPTOM SEARCH
+        ==================================== */}
 
         <textarea
           value={symptoms}
           onChange={(e) => setSymptoms(e.target.value)}
           placeholder="Example: fever, cough, headache"
+          disabled={loading}
         />
 
         <button
@@ -142,40 +183,89 @@ const DiseaseSearch = ({ setResult }) => {
           )}
         </button>
 
+        {/* ====================================
+            DIVIDER
+        ==================================== */}
+
         <div className="divider">
           <span>OR</span>
         </div>
 
+        {/* ====================================
+            IMAGE UPLOAD
+        ==================================== */}
+
         <label className="upload-label">
           <FaUpload />
-          Choose Medical Image
+          {image ? "Change Medical Image" : "Choose Medical Image"}
 
           <input
             type="file"
             hidden
-            accept="image/*"
+            accept="image/png,image/jpeg,image/webp"
             onChange={handleImageChange}
+            disabled={loading}
           />
         </label>
 
+        {/* ====================================
+            IMAGE PREVIEW
+        ==================================== */}
+
         {preview && (
           <div className="image-preview">
-            <img src={preview} alt="preview" />
+
+            <img
+              src={preview}
+              alt="Selected medical image"
+            />
+
+            <button
+              type="button"
+              onClick={handleRemoveImage}
+              disabled={loading}
+            >
+              Remove Image
+            </button>
+
           </div>
         )}
+
+        {/* ====================================
+            AI IMAGE ANALYSIS BUTTON
+        ==================================== */}
 
         {image && (
           <button
             className="upload-btn"
             onClick={handleImageUpload}
+            disabled={loading}
           >
-            <FaImage />
-            Predict From Image
+            {loading ? (
+              <>
+                <FaSpinner className="spin" />
+                Analyzing Image...
+              </>
+            ) : (
+              <>
+                <FaImage />
+                Analyze Image with AI
+              </>
+            )}
           </button>
         )}
 
-      </div>
+        {/* ====================================
+            ERROR
+        ==================================== */}
 
+        {error && (
+          <div className="prediction-error">
+            {error}
+          </div>
+        )}
+
+      </div>
     </section>
   );
 };
